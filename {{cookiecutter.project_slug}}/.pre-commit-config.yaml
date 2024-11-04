@@ -18,4 +18,21 @@ repos:
     hooks:
       - id: commitizen
       - id: commitizen-branch
-        stages: [ pre-push ]
+        stages: [ push ]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.4.0
+    hooks:
+      # Run the linter.
+      - id: ruff
+        types_or: [ python, pyi ]
+        args: [ --fix ]
+      # Run the formatter.
+      - id: ruff-format
+        types_or: [ python, pyi ]
+
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.365
+    hooks:
+      - id: pyright
