@@ -1,7 +1,7 @@
 import nox
 
 
-@nox.session
+@nox.session(tags=["ci"])
 def lint(session, fix=False, unsafe=False):
     session.install("ruff")
     command = ["ruff", "check"]
@@ -21,7 +21,7 @@ def format(session, unsafe=False):
     session.run(*command, ".")
 
 
-@nox.session
+@nox.session(tags=["ci"])
 def typecheck(session):
     session.install("pyright")
     session.run("pyright")
